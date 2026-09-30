@@ -1,0 +1,1352 @@
+:root {
+  --bg: #f5f3ee;
+  --surface: #eeece5;
+  --surface-light: #faf9f6;
+
+  --navy: #102a43;
+  --navy-light: #1b3b58;
+
+  --teal: #3a8d9d;
+  --teal-dark: #286f7c;
+
+  --text: #17202a;
+  --muted: #6b7280;
+
+  --border: #c9c9c1;
+  --white: #ffffff;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+
+  background: var(--bg);
+  color: var(--text);
+
+  line-height: 1.6;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
+body.dark {
+  --bg: #07111f;
+  --surface: #0b1b2d;
+  --surface-light: #10243a;
+
+  --navy: #e6f3f7;
+  --navy-light: #c5dce3;
+
+  --teal: #63c1d0;
+  --teal-dark: #419eae;
+
+  --text: #edf7fa;
+  --muted: #9ab0ba;
+
+  --border: #173653;
+  --white: #ffffff;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 22px 6vw;
+
+  background: var(--bg);
+
+  border-bottom: 1px solid var(--border);
+
+  transition: 0.2s ease;
+}
+
+.logo {
+  color: var(--navy);
+
+  text-decoration: none;
+
+  font-size: 1.4rem;
+
+  font-weight: 800;
+
+  letter-spacing: -0.05em;
+}
+
+.logo span {
+  color: var(--teal);
+}
+
+.nav-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+}
+
+.nav-links a {
+  color: var(--muted);
+
+  text-decoration: none;
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--teal);
+}
+
+.nav-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.theme-toggle {
+  width: 42px;
+
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0;
+
+  background: transparent;
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--teal);
+
+  color: var(--teal);
+}
+
+.nav-contact {
+  padding: 11px 18px;
+
+  border-radius: 0;
+
+  background: var(--navy);
+
+  color: var(--bg);
+
+  text-decoration: none;
+
+  font-size: 0.75rem;
+
+  font-weight: 800;
+
+  transition: 0.2s ease;
+}
+
+.nav-contact:hover {
+  background: var(--teal);
+
+  color: white;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  min-height: calc(100vh - 86px);
+
+  display: grid;
+
+  grid-template-columns: 1fr 0.85fr;
+
+  align-items: center;
+
+  gap: 70px;
+
+  padding: 80px 8vw 100px;
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+.eyebrow {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color: var(--teal);
+
+  font-size: 0.72rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+
+  margin-bottom: 24px;
+}
+
+.status-dot {
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 0;
+
+  background: var(--teal);
+}
+
+.hero h1 {
+  color: var(--navy);
+
+  font-size: clamp(4rem, 7vw, 7.5rem);
+
+  line-height: 0.9;
+
+  letter-spacing: -0.07em;
+
+  margin-bottom: 28px;
+}
+
+.hero h1 span {
+  display: block;
+
+  color: var(--teal);
+
+  font-family: "Playfair Display", serif;
+
+  font-style: italic;
+
+  font-weight: 500;
+}
+
+.hero-subtitle {
+  color: var(--navy);
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  margin-bottom: 16px;
+}
+
+.hero-subtitle span {
+  color: var(--teal);
+
+  padding: 0 8px;
+}
+
+.hero-description {
+  max-width: 570px;
+
+  color: var(--muted);
+
+  font-size: 1rem;
+
+  margin-bottom: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 14px 22px;
+
+  border-radius: 0;
+
+  text-decoration: none;
+
+  font-size: 0.8rem;
+
+  font-weight: 800;
+
+  transition: 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--navy);
+
+  color: var(--bg);
+}
+
+.btn-primary:hover {
+  background: var(--teal);
+
+  color: white;
+}
+
+.btn-secondary {
+  border: 1px solid var(--border);
+
+  background: transparent;
+
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--teal);
+
+  color: var(--teal);
+}
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.hero-visual {
+  min-height: 590px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  position: relative;
+}
+
+.medical-orbit {
+  position: absolute;
+
+  border: 1px solid var(--border);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.orbit-one {
+  width: 490px;
+
+  height: 490px;
+
+  transform: rotate(-18deg);
+}
+
+.orbit-two {
+  width: 390px;
+
+  height: 570px;
+
+  transform: rotate(35deg);
+}
+
+/* =========================================================
+   PORTRAIT
+========================================================= */
+
+.portrait-card {
+  width: min(390px, 75%);
+
+  position: relative;
+
+  z-index: 3;
+
+  background: var(--white);
+
+  border: 2px solid var(--navy);
+
+  border-radius: 0;
+
+  overflow: hidden;
+
+  box-shadow: none;
+}
+
+.portrait-image {
+  width: 100%;
+
+  height: 480px;
+
+  background: #000;
+
+  overflow: hidden;
+}
+
+.portrait-image img {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  filter: none;
+}
+
+.portrait-info {
+  min-height: 75px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 20px;
+
+  background: var(--white);
+
+  border-top: 2px solid var(--navy);
+}
+
+.portrait-info span {
+  color: var(--teal);
+
+  font-size: 0.72rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.portrait-info strong {
+  color: var(--navy);
+
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   ECG CARD
+========================================================= */
+
+.ecg-card {
+  position: absolute;
+
+  right: 0;
+
+  bottom: 35px;
+
+  z-index: 5;
+
+  width: 250px;
+
+  padding: 18px;
+
+  background: var(--navy);
+
+  color: white;
+
+  border: 2px solid var(--navy);
+
+  border-radius: 0;
+
+  overflow: hidden;
+
+  box-shadow: none;
+}
+
+.ecg-card > span {
+  display: block;
+
+  color: #8ebac3;
+
+  font-size: 0.6rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+
+  margin-bottom: 8px;
+}
+
+.ecg-card svg {
+  width: 100%;
+
+  height: 55px;
+
+  display: block;
+
+  overflow: visible;
+}
+
+.ecg-card polyline {
+  fill: none;
+
+  stroke: var(--teal);
+
+  stroke-width: 2.5;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  stroke-dasharray: 320;
+
+  stroke-dashoffset: 320;
+
+  animation: ecgMove 2.2s linear infinite;
+}
+
+@keyframes ecgMove {
+  0% {
+    stroke-dashoffset: 320;
+  }
+
+  45% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -320;
+  }
+}
+
+.ecg-card strong {
+  display: block;
+
+  color: #dbe8eb;
+
+  font-size: 0.65rem;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   MEDICAL SYMBOL
+========================================================= */
+
+.medical-symbol {
+  position: absolute;
+
+  left: 4%;
+
+  top: 15%;
+
+  z-index: 6;
+
+  width: 55px;
+
+  height: 55px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: var(--teal);
+
+  color: white;
+
+  border: 2px solid var(--navy);
+
+  border-radius: 0;
+
+  font-size: 1.6rem;
+
+  box-shadow: none;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section {
+  padding: 120px 8vw;
+
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  color: var(--teal);
+
+  font-size: 0.68rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+
+  margin-bottom: 50px;
+}
+
+.section h2 {
+  color: var(--navy);
+
+  font-size: clamp(2.5rem, 5vw, 5rem);
+
+  line-height: 1;
+
+  letter-spacing: -0.055em;
+}
+
+.section h2 em {
+  color: var(--teal);
+
+  font-family: "Playfair Display", serif;
+
+  font-style: italic;
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about {
+  display: grid;
+
+  grid-template-columns: 0.35fr 1fr;
+
+  gap: 70px;
+}
+
+.section-content {
+  max-width: 800px;
+}
+
+.section-content h2 {
+  margin-bottom: 40px;
+}
+
+.section-content p {
+  max-width: 680px;
+
+  color: var(--muted);
+
+  font-size: 1.05rem;
+
+  margin-bottom: 18px;
+}
+
+/* =========================================================
+   JOURNEY
+========================================================= */
+
+.journey-header {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 70px;
+}
+
+.journey-header p {
+  max-width: 330px;
+
+  color: var(--muted);
+
+  font-size: 0.9rem;
+}
+
+.timeline {
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  border-left: 1px solid var(--border);
+}
+
+.timeline-item {
+  display: grid;
+
+  grid-template-columns: 80px 1fr;
+
+  gap: 30px;
+
+  padding: 35px 40px;
+
+  background: transparent;
+
+  border-bottom: 1px solid var(--border);
+
+  transition: none;
+}
+
+.timeline-item:hover {
+  background: transparent;
+}
+
+.timeline-item.active {
+  background: transparent;
+
+  border-left: none;
+
+  margin-left: 0;
+}
+
+.timeline-number {
+  color: var(--teal);
+
+  font-size: 0.75rem;
+
+  font-weight: 800;
+}
+
+.timeline-status {
+  color: var(--teal);
+
+  font-size: 0.62rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+}
+
+.timeline-item h3 {
+  color: var(--navy);
+
+  font-size: 1.6rem;
+
+  margin: 8px 0;
+}
+
+.timeline-item p {
+  max-width: 600px;
+
+  color: var(--muted);
+
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.education-card {
+  display: grid;
+
+  grid-template-columns: 150px 1fr auto;
+
+  align-items: center;
+
+  gap: 30px;
+
+  padding: 45px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 0;
+
+  box-shadow: none;
+}
+
+.education-year {
+  color: var(--teal);
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.education-main > span {
+  color: var(--teal);
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+}
+
+.education-main h2 {
+  color: var(--navy);
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 2rem;
+
+  margin: 8px 0;
+}
+
+.education-main p {
+  color: var(--muted);
+
+  font-size: 0.9rem;
+}
+
+.education-status {
+  color: var(--navy);
+
+  padding: 10px 15px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0;
+
+  font-size: 0.72rem;
+
+  font-weight: 800;
+}
+
+/* =========================================================
+   CLINICAL
+========================================================= */
+
+.clinical-heading {
+  margin-bottom: 60px;
+}
+
+.clinical-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+}
+
+.clinical-card {
+  min-height: 250px;
+
+  padding: 30px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 0;
+
+  transition: 0.2s ease;
+}
+
+.clinical-card:hover {
+  border-color: var(--teal);
+
+  transform: translateY(-3px);
+}
+
+.clinical-card > span {
+  color: var(--teal);
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+}
+
+.clinical-card h3 {
+  color: var(--navy);
+
+  font-size: 1.45rem;
+
+  margin: 70px 0 10px;
+}
+
+.clinical-card p {
+  color: var(--muted);
+
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   INTERESTS
+========================================================= */
+
+.interests-layout {
+  display: grid;
+
+  grid-template-columns: 0.8fr 1fr;
+
+  gap: 80px;
+}
+
+.interest-list {
+  border-top: 1px solid var(--border);
+}
+
+.interest-item {
+  display: grid;
+
+  grid-template-columns: 60px 1fr;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 25px 0;
+
+  border-bottom: 1px solid var(--border);
+
+  transition: 0.2s ease;
+}
+
+.interest-item:hover {
+  padding-left: 12px;
+}
+
+.interest-item span {
+  color: var(--teal);
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+}
+
+.interest-item h3 {
+  color: var(--navy);
+
+  font-size: 1.4rem;
+}
+
+/* =========================================================
+   VOLUNTEERING
+========================================================= */
+
+.volunteer-content {
+  max-width: 800px;
+}
+
+.volunteer-content h2 {
+  margin-bottom: 30px;
+}
+
+.volunteer-content p {
+  max-width: 600px;
+
+  color: var(--muted);
+
+  font-size: 1rem;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact {
+  min-height: 65vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.contact-content {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.contact-eyebrow {
+  display: block;
+
+  color: var(--teal);
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+
+  margin-bottom: 20px;
+}
+
+.contact-content h2 {
+  margin-bottom: 45px;
+}
+
+.contact-email {
+  display: inline-block;
+
+  padding: 15px 24px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0;
+
+  color: var(--text);
+
+  text-decoration: none;
+
+  font-size: 0.8rem;
+
+  font-weight: 800;
+
+  transition: 0.2s ease;
+}
+
+.contact-email:hover {
+  border-color: var(--teal);
+
+  color: var(--teal);
+}
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-to-top {
+  position: fixed;
+
+  right: 25px;
+
+  bottom: 25px;
+
+  width: 45px;
+
+  height: 45px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 0;
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: translateY(15px);
+
+  transition: 0.2s ease;
+
+  z-index: 900;
+}
+
+.back-to-top.show {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--teal);
+
+  color: white;
+
+  border-color: var(--teal);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 30px 8vw;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--muted);
+
+  font-size: 0.7rem;
+}
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark .navbar {
+  background: #07111f;
+
+  border-bottom-color: #173653;
+}
+
+body.dark .section {
+  border-top-color: #173653;
+}
+
+body.dark .timeline {
+  border-left-color: #173653;
+}
+
+body.dark .timeline-item {
+  background: transparent;
+
+  border-bottom-color: #173653;
+}
+
+body.dark .timeline-item:hover {
+  background: transparent;
+}
+
+body.dark .timeline-item.active {
+  background: transparent;
+
+  border-left: none;
+}
+
+body.dark .education-card,
+body.dark .clinical-card {
+  background: #0b1b2d;
+
+  border-color: #173653;
+}
+
+body.dark .interest-list,
+body.dark .interest-item {
+  border-color: #173653;
+}
+
+body.dark .contact-email,
+body.dark .back-to-top {
+  border-color: #173653;
+}
+
+body.dark .back-to-top {
+  background: #07111f;
+}
+
+body.dark footer {
+  border-top-color: #173653;
+}
+
+body.dark .medical-orbit {
+  border-color: #173653;
+}
+
+body.dark .portrait-card {
+  border-color: #63c1d0;
+}
+
+body.dark .portrait-info {
+  border-top-color: #63c1d0;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+
+    padding-top: 70px;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-visual {
+    min-height: 550px;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .clinical-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .interests-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .education-card {
+    grid-template-columns: 1fr;
+  }
+
+  .education-status {
+    width: fit-content;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+  .navbar {
+    padding: 18px 5vw;
+  }
+
+  .nav-contact {
+    display: none;
+  }
+
+  .hero {
+    padding: 65px 6vw 80px;
+
+    gap: 30px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem, 16vw, 5.5rem);
+  }
+
+  .hero-visual {
+    min-height: 480px;
+  }
+
+  .medical-orbit {
+    display: none;
+  }
+
+  .portrait-card {
+    width: 85%;
+  }
+
+  .portrait-image {
+    height: 400px;
+  }
+
+  .ecg-card {
+    right: -5px;
+
+    bottom: 10px;
+
+    width: 210px;
+  }
+
+  .medical-symbol {
+    left: 0;
+
+    top: 8%;
+  }
+
+  .section {
+    padding: 85px 6vw;
+  }
+
+  .section-label {
+    margin-bottom: 35px;
+  }
+
+  .journey-header {
+    display: block;
+  }
+
+  .journey-header p {
+    margin-top: 20px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 45px 1fr;
+
+    gap: 15px;
+
+    padding: 28px 20px;
+  }
+
+  .timeline-item.active {
+    border-left: none;
+
+    margin-left: 0;
+
+    background: transparent;
+  }
+
+  .clinical-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clinical-card {
+    min-height: 210px;
+  }
+
+  .clinical-card h3 {
+    margin-top: 50px;
+  }
+
+  .education-card {
+    padding: 30px 25px;
+  }
+
+  .education-main h2 {
+    font-size: 1.5rem;
+  }
+
+  .interest-item h3 {
+    font-size: 1.1rem;
+  }
+
+  footer {
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 25px 6vw;
+  }
+}
