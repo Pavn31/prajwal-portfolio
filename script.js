@@ -4,7 +4,7 @@
 
 const navbar = document.querySelector(".navbar");
 
-window.addEventListener("scroll", () => {
+function updateNavbar() {
   if (!navbar) return;
 
   if (window.scrollY > 30) {
@@ -12,7 +12,10 @@ window.addEventListener("scroll", () => {
   } else {
     navbar.classList.remove("scrolled");
   }
-});
+}
+
+window.addEventListener("scroll", updateNavbar);
+updateNavbar();
 
 /* =========================================================
    THEME TOGGLE
@@ -114,7 +117,8 @@ sections.forEach((section) => {
 
 const revealElements = document.querySelectorAll(
   `
-  .section-content,
+  .section-header,
+  .about-content,
   .timeline-item,
   .education-card,
   .clinical-card,
@@ -155,7 +159,7 @@ revealElements.forEach((element) => {
 
 const backToTop = document.getElementById("backToTop");
 
-window.addEventListener("scroll", () => {
+function updateBackToTop() {
   if (!backToTop) {
     return;
   }
@@ -165,7 +169,10 @@ window.addEventListener("scroll", () => {
   } else {
     backToTop.classList.remove("show");
   }
-});
+}
+
+window.addEventListener("scroll", updateBackToTop);
+updateBackToTop();
 
 if (backToTop) {
   backToTop.addEventListener("click", () => {
@@ -183,7 +190,6 @@ if (backToTop) {
 const ecgLine = document.querySelector(".ecg-card polyline");
 
 if (ecgLine) {
-  // Restart the ECG animation when the page loads.
   ecgLine.style.animation = "none";
 
   requestAnimationFrame(() => {
