@@ -1487,3 +1487,162 @@ body.page-loaded .hero-content {
     width: calc(100% - 16px);
   }
 }
+
+/* =========================================================
+   THEME COLOR CORRECTIONS — layout and dimensions unchanged
+   The original --navy changes from dark to light in dark mode.
+   Surfaces that used --navy as a background therefore became
+   light, while their text stayed white. Use semantic colors here.
+========================================================= */
+
+/* Light theme: explicit contrast for primary surfaces */
+:root {
+  --primary-fill: #102a43;
+  --primary-ink: #ffffff;
+  --primary-hover-ink: #102a43;
+  --contact-fill: #102a43;
+  --contact-ink: #ffffff;
+  --contact-muted: #c2d1d9;
+  --footer-fill: #102a43;
+  --footer-ink: #b6c8d0;
+  --card-hover-fill: #102a43;
+  --card-hover-ink: #ffffff;
+}
+
+body.dark {
+  --primary-fill: #173650;
+  --primary-ink: #edf7fa;
+  --primary-hover-ink: #edf7fa;
+  --contact-fill: #0b1b2d;
+  --contact-ink: #edf7fa;
+  --contact-muted: #a9bfca;
+  --footer-fill: #091725;
+  --footer-ink: #a9bfca;
+  --card-hover-fill: #173650;
+  --card-hover-ink: #edf7fa;
+}
+
+/* Primary controls retain readable text in both modes */
+.nav-contact,
+.btn-primary,
+.ecg-card,
+.back-to-top {
+  background: var(--primary-fill);
+  color: var(--primary-ink);
+  border-color: var(--primary-fill);
+}
+
+.nav-contact:hover,
+.btn-primary:hover {
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--navy);
+}
+
+.btn-secondary:hover,
+.theme-toggle:hover {
+  background: var(--primary-fill);
+  color: var(--primary-ink);
+  border-color: var(--primary-fill);
+}
+
+/* Photo strip and decorative plus */
+.portrait-info {
+  background: var(--surface-light);
+  color: var(--navy);
+}
+
+body.dark .portrait-card,
+body.dark .portrait-info {
+  background: var(--surface-light);
+}
+
+.medical-symbol {
+  color: #ffffff;
+}
+
+.ecg-card .ecg-label {
+  color: #a8d7e0;
+}
+
+.ecg-card .ecg-school {
+  color: var(--primary-ink);
+}
+
+/* Clinical cards: dark-mode hover must not become pale */
+.clinical-card:hover {
+  background: var(--card-hover-fill);
+}
+
+.clinical-card:hover h3 {
+  color: var(--card-hover-ink);
+}
+
+.clinical-card:hover p {
+  color: #c5dce3;
+}
+
+/* Contact section and footer: always dark surfaces with legible ink */
+.contact {
+  background: var(--contact-fill);
+  color: var(--contact-ink);
+}
+
+.contact .section-title,
+.contact .contact-email {
+  color: var(--contact-ink);
+}
+
+.contact .section-eyebrow {
+  color: #76c7d5;
+}
+
+.contact .contact-text p {
+  color: var(--contact-muted);
+}
+
+.contact .contact-email:hover {
+  color: #76c7d5;
+}
+
+.footer {
+  background: var(--footer-fill);
+  color: var(--footer-ink);
+  border-top-color: rgba(180, 210, 224, 0.2);
+}
+
+/* Back-to-top contrast */
+.back-to-top:hover {
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
+  color: #ffffff;
+}
+
+/* Explicit dark mode for any remaining primary-colored surfaces */
+body.dark .navbar {
+  background: var(--bg);
+}
+
+body.dark .theme-toggle {
+  color: var(--text);
+}
+
+body.dark .theme-toggle:hover {
+  background: var(--primary-fill);
+  color: var(--primary-ink);
+}
+
+body.dark .nav-contact,
+body.dark .btn-primary,
+body.dark .back-to-top {
+  color: var(--primary-ink);
+}
+
+body.dark .nav-contact:hover,
+body.dark .btn-primary:hover {
+  color: var(--text);
+}
+
+body.dark .btn-secondary:hover {
+  color: var(--primary-ink);
+}
