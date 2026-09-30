@@ -20,12 +20,9 @@
   --border: #d8d0c3;
   --border-dark: #c6bdae;
 
-  --white: #ffffff;
-
   --container: 1180px;
   --nav-height: 78px;
 
-  --radius: 0px;
   --transition: 220ms ease;
 }
 
@@ -50,8 +47,6 @@ body.dark {
 
   --border: #294657;
   --border-dark: #365466;
-
-  --white: #f5f1e8;
 }
 
 /* =========================================================
@@ -75,6 +70,7 @@ body {
   color: var(--text);
   font-family: "Manrope", sans-serif;
   line-height: 1.6;
+
   transition:
     background-color var(--transition),
     color var(--transition);
@@ -116,8 +112,10 @@ button {
   position: fixed;
   top: 0;
   left: 0;
+
   width: 100%;
   height: var(--nav-height);
+
   z-index: 1000;
 
   background: var(--bg);
@@ -140,16 +138,20 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: 30px;
 }
 
-/* Logo */
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo {
   font-family: "Playfair Display", serif;
   font-size: 30px;
   font-weight: 700;
   letter-spacing: -1px;
+
   color: var(--navy-dark);
 }
 
@@ -157,7 +159,9 @@ button {
   color: var(--teal);
 }
 
-/* Navigation */
+/* =========================================================
+   NAV LINKS
+========================================================= */
 
 .nav-links {
   display: flex;
@@ -170,6 +174,7 @@ button {
 
   font-size: 13px;
   font-weight: 700;
+
   color: var(--text-soft);
 
   transition: color var(--transition);
@@ -190,15 +195,19 @@ button {
   transition: width var(--transition);
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--teal);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
   width: 100%;
 }
 
-/* Navigation actions */
+/* =========================================================
+   NAV ACTIONS
+========================================================= */
 
 .nav-actions {
   display: flex;
@@ -264,7 +273,7 @@ button {
   min-height: calc(100vh - var(--nav-height));
   min-height: calc(100dvh - var(--nav-height));
 
-  padding-top: var(--nav-height);
+  padding: var(--nav-height) 0 70px;
 
   display: flex;
   align-items: center;
@@ -277,25 +286,31 @@ button {
 }
 
 .hero-grid {
-  min-height: calc(100vh - var(--nav-height));
-  min-height: calc(100dvh - var(--nav-height));
-
   display: grid;
-  grid-template-columns: 1fr 0.9fr;
+
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(360px, 0.85fr);
+
   align-items: center;
-  gap: 80px;
+
+  gap: 70px;
+
+  padding: 70px 0 30px;
 }
 
-/* Hero text */
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
 .hero-content {
   max-width: 650px;
 }
 
 .hero-eyebrow {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 2px;
 
@@ -306,8 +321,9 @@ button {
   margin-bottom: 20px;
 
   font-family: "Playfair Display", serif;
-  font-size: clamp(58px, 7vw, 100px);
+  font-size: clamp(58px, 6.5vw, 92px);
   font-weight: 600;
+
   line-height: 0.94;
   letter-spacing: -4px;
 
@@ -315,9 +331,9 @@ button {
 }
 
 .hero-subtitle {
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
 
   color: var(--text-soft);
@@ -329,14 +345,18 @@ button {
 }
 
 .hero-description {
-  max-width: 560px;
-  margin-bottom: 34px;
+  max-width: 530px;
+  margin-bottom: 30px;
 
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.7;
+
   color: var(--text-soft);
 }
 
-/* Hero buttons */
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
 .hero-buttons {
   display: flex;
@@ -348,14 +368,14 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 9px;
 
-  min-height: 48px;
-  padding: 0 21px;
+  min-height: 46px;
+  padding: 0 20px;
 
   border: 1px solid var(--navy);
 
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
 
   transition:
@@ -394,20 +414,22 @@ button {
 .hero-visual {
   position: relative;
 
-  min-height: 560px;
+  min-height: 500px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Portrait */
+/* =========================================================
+   PORTRAIT
+========================================================= */
 
 .portrait-card {
   position: relative;
   z-index: 2;
 
-  width: min(390px, 100%);
+  width: min(380px, 100%);
 
   background: var(--surface);
   border: 1px solid var(--border);
@@ -415,6 +437,7 @@ button {
 
 .portrait-image {
   aspect-ratio: 4 / 5;
+
   overflow: hidden;
 
   background: var(--bg-soft);
@@ -428,39 +451,43 @@ button {
 }
 
 .portrait-info {
-  min-height: 72px;
-  padding: 15px 18px;
+  min-height: 68px;
+  padding: 14px 17px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
 
   border-top: 1px solid var(--border);
 }
 
 .portrait-info span {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 1.5px;
+
   color: var(--teal);
 }
 
 .portrait-info strong {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text);
 }
 
-/* ECG */
+/* =========================================================
+   ECG CARD
+========================================================= */
 
 .ecg-card {
   position: absolute;
-  right: 0;
+
+  right: -35px;
   bottom: 35px;
+
   z-index: 3;
 
-  width: 290px;
-  padding: 18px;
+  width: 270px;
+  padding: 17px;
 
   background: var(--surface);
   border: 1px solid var(--border);
@@ -468,9 +495,9 @@ button {
 
 .ecg-label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
 
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 800;
   letter-spacing: 1.7px;
 
@@ -479,12 +506,14 @@ button {
 
 .ecg-card svg {
   display: block;
+
   width: 100%;
-  height: 55px;
+  height: 50px;
 }
 
 .ecg-card polyline {
   fill: none;
+
   stroke: var(--teal);
   stroke-width: 2;
 
@@ -502,27 +531,30 @@ button {
 
 .ecg-school {
   display: block;
-  margin-top: 4px;
+  margin-top: 3px;
 
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-soft);
 }
 
-/* Medical symbol */
+/* =========================================================
+   MEDICAL SYMBOL
+========================================================= */
 
 .medical-symbol {
   position: absolute;
-  top: 70px;
-  right: 50px;
+
+  top: 35px;
+  right: 20px;
 
   font-family: Arial, sans-serif;
-  font-size: 75px;
+  font-size: 70px;
   font-weight: 300;
+
   line-height: 1;
 
   color: var(--teal);
-
-  opacity: 0.13;
+  opacity: 0.12;
 }
 
 /* =========================================================
@@ -552,10 +584,11 @@ button {
 
 .section-title {
   font-family: "Playfair Display", serif;
+
   font-size: clamp(42px, 5vw, 68px);
   font-weight: 600;
-  line-height: 1;
 
+  line-height: 1;
   letter-spacing: -2px;
 
   color: var(--navy-dark);
@@ -609,6 +642,7 @@ button {
   content: "";
 
   position: absolute;
+
   left: 24px;
   top: 0;
   bottom: 0;
@@ -622,11 +656,15 @@ button {
   position: relative;
 
   display: grid;
+
   grid-template-columns: 50px 130px 1fr;
+
   align-items: start;
+
   gap: 22px;
 
   min-height: 125px;
+
   padding-bottom: 45px;
 }
 
@@ -656,6 +694,7 @@ button {
 .timeline-item.active .timeline-dot {
   background: var(--teal);
   border-color: var(--teal);
+
   color: #ffffff;
 }
 
@@ -699,8 +738,10 @@ button {
 
 .education-card {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   gap: 30px;
 
   padding: 30px;
@@ -739,7 +780,9 @@ button {
 
 .clinical-grid {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
+
   gap: 1px;
 
   background: var(--border);
@@ -748,13 +791,12 @@ button {
 
 .clinical-card {
   min-height: 220px;
+
   padding: 28px;
 
   background: var(--bg);
 
-  transition:
-    background-color var(--transition),
-    color var(--transition);
+  transition: background-color var(--transition);
 }
 
 .clinical-card:hover {
@@ -791,6 +833,7 @@ button {
 
 .interests-grid {
   display: grid;
+
   grid-template-columns: repeat(2, 1fr);
 
   border-top: 1px solid var(--border);
@@ -799,12 +842,13 @@ button {
 
 .interest-item {
   min-height: 180px;
+
   padding: 28px;
+
+  background: var(--bg);
 
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-
-  background: var(--bg);
 
   transition: background-color var(--transition);
 }
@@ -840,6 +884,7 @@ button {
   padding: 35px;
 
   border-left: 3px solid var(--teal);
+
   background: var(--surface);
 }
 
@@ -862,8 +907,10 @@ button {
 
 .contact-content {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   gap: 40px;
 
   padding: 40px 0;
@@ -884,15 +931,13 @@ button {
 
   color: var(--teal);
 
+  overflow-wrap: anywhere;
+
   transition: color var(--transition);
 }
 
 .contact-email:hover {
   color: var(--navy-dark);
-}
-
-.contact-email {
-  overflow-wrap: anywhere;
 }
 
 /* =========================================================
@@ -901,6 +946,7 @@ button {
 
 .back-to-top {
   position: fixed;
+
   right: 24px;
   bottom: 24px;
 
@@ -911,6 +957,7 @@ button {
   place-items: center;
 
   border: 1px solid var(--border);
+
   background: var(--surface);
   color: var(--text);
 
@@ -918,6 +965,7 @@ button {
 
   opacity: 0;
   visibility: hidden;
+
   transform: translateY(10px);
 
   transition:
@@ -930,12 +978,14 @@ button {
 .back-to-top.visible {
   opacity: 1;
   visibility: visible;
+
   transform: translateY(0);
 }
 
 .back-to-top:hover {
   background: var(--teal);
   border-color: var(--teal);
+
   color: #ffffff;
 }
 
@@ -951,8 +1001,10 @@ button {
 
 .footer-inner {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   gap: 20px;
 
   font-size: 11px;
@@ -962,13 +1014,22 @@ button {
 }
 
 /* =========================================================
-   FOCUS
+   SCROLL REVEAL
 ========================================================= */
 
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--teal);
-  outline-offset: 3px;
+.reveal {
+  opacity: 0;
+
+  transform: translateY(18px);
+
+  transition:
+    opacity 600ms ease,
+    transform 600ms ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* =========================================================
@@ -981,21 +1042,15 @@ button:focus-visible {
 }
 
 /* =========================================================
-   SCROLL REVEAL
+   FOCUS
 ========================================================= */
 
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 600ms ease,
-    transform 600ms ease;
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 /* =========================================================
    REDUCED MOTION
 ========================================================= */
@@ -1038,7 +1093,10 @@ button:focus-visible {
   }
 
   .hero-grid {
-    grid-template-columns: 1fr 0.8fr;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(320px, 0.8fr);
+
     gap: 45px;
   }
 
@@ -1047,12 +1105,12 @@ button:focus-visible {
   }
 
   .hero-visual {
-    min-height: 500px;
+    min-height: 470px;
   }
 
   .ecg-card {
     right: -10px;
-    width: 270px;
+    width: 250px;
   }
 
   .clinical-grid {
@@ -1086,18 +1144,20 @@ button:focus-visible {
     display: none;
   }
 
+  /* Hero */
+
   .hero {
     min-height: auto;
-    padding-top: var(--nav-height);
+
+    padding: var(--nav-height) 0 50px;
   }
 
   .hero-grid {
-    min-height: auto;
-
     grid-template-columns: 1fr;
-    gap: 55px;
 
-    padding: 80px 0;
+    gap: 50px;
+
+    padding: 55px 0 30px;
   }
 
   .hero-content {
@@ -1106,6 +1166,7 @@ button:focus-visible {
 
   .hero-title {
     font-size: clamp(54px, 15vw, 78px);
+
     letter-spacing: -3px;
   }
 
@@ -1113,8 +1174,10 @@ button:focus-visible {
     max-width: 600px;
   }
 
+  /* Hero visual */
+
   .hero-visual {
-    min-height: 480px;
+    min-height: 450px;
   }
 
   .portrait-card {
@@ -1124,6 +1187,7 @@ button:focus-visible {
   .ecg-card {
     right: 10px;
     bottom: 15px;
+
     width: min(250px, calc(100% - 20px));
   }
 
@@ -1131,6 +1195,8 @@ button:focus-visible {
     top: 30px;
     right: 20px;
   }
+
+  /* Sections */
 
   .section {
     padding: 90px 0;
@@ -1140,14 +1206,18 @@ button:focus-visible {
     margin-bottom: 45px;
   }
 
+  /* Timeline */
+
   .timeline-item {
     grid-template-columns: 50px 1fr;
+
     gap: 18px;
   }
 
   .timeline-status {
     grid-column: 2;
     grid-row: 1;
+
     padding-top: 0;
   }
 
@@ -1165,10 +1235,14 @@ button:focus-visible {
     left: 24px;
   }
 
+  /* Education */
+
   .education-card {
     align-items: flex-start;
     flex-direction: column;
   }
+
+  /* Contact */
 
   .contact-content {
     align-items: flex-start;
@@ -1190,8 +1264,10 @@ button:focus-visible {
     font-size: 27px;
   }
 
+  /* Hero */
+
   .hero-grid {
-    padding: 65px 0;
+    padding: 45px 0 25px;
   }
 
   .hero-title {
@@ -1215,6 +1291,8 @@ button:focus-visible {
     width: 100%;
   }
 
+  /* Hero visual */
+
   .hero-visual {
     min-height: 420px;
   }
@@ -1226,6 +1304,7 @@ button:focus-visible {
   .ecg-card {
     right: 0;
     bottom: 5px;
+
     width: 230px;
   }
 
@@ -1233,6 +1312,8 @@ button:focus-visible {
     font-size: 60px;
     right: 5px;
   }
+
+  /* Sections */
 
   .section {
     padding: 75px 0;
@@ -1242,9 +1323,13 @@ button:focus-visible {
     font-size: 43px;
   }
 
+  /* About */
+
   .about-content p {
     font-size: 19px;
   }
+
+  /* Clinical */
 
   .clinical-grid {
     grid-template-columns: 1fr;
@@ -1257,6 +1342,8 @@ button:focus-visible {
   .clinical-number {
     margin-bottom: 45px;
   }
+
+  /* Interests */
 
   .interests-grid {
     grid-template-columns: 1fr;
@@ -1274,18 +1361,26 @@ button:focus-visible {
     font-size: 25px;
   }
 
+  /* Volunteering */
+
   .volunteer-content {
     padding: 25px;
   }
+
+  /* Contact */
 
   .contact-email {
     font-size: 17px;
   }
 
+  /* Footer */
+
   .footer-inner {
     align-items: flex-start;
     flex-direction: column;
   }
+
+  /* Back to top */
 
   .back-to-top {
     right: 15px;
