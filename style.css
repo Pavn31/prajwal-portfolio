@@ -277,24 +277,22 @@ section {
 
 .hero {
   min-height: calc(100vh - 78px);
-  padding: 105px 0 85px;
-}
+  padding: 72px 0 70px;
 
-.hero > .container {
-  width: min(var(--max-width), calc(100% - 48px));
-  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 500px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(430px, 500px);
+  align-items: start;
   gap: 70px;
 }
 
 .hero-content {
   max-width: 650px;
-  padding-top: 0;
+  padding-top: 18px;
 }
 
 .hero-eyebrow {
@@ -400,8 +398,11 @@ section {
 
 .hero-visual {
   position: relative;
+
   width: 500px;
   max-width: 100%;
+
+  margin: 0;
   margin-left: auto;
   padding-bottom: 78px;
 }
@@ -427,8 +428,9 @@ section {
 
 .portrait-image {
   position: relative;
+
   width: 100%;
-  height: 540px;
+  height: 500px;
 
   overflow: hidden;
 
@@ -438,9 +440,12 @@ section {
 .portrait-image img {
   width: 100%;
   height: 100%;
+
   display: block;
+
   object-fit: cover;
-  object-position: center 35%;
+  object-position: 28% 45%;
+
   filter: none;
 }
 
@@ -635,8 +640,10 @@ section {
 
 .timeline-item {
   position: relative;
+
   display: grid;
   grid-template-columns: 32px 150px 1fr;
+
   gap: 24px;
 
   padding: 28px 0;
@@ -1077,12 +1084,8 @@ body.dark .education-card {
 
 @media (max-width: 1050px) {
   .hero-grid {
-    grid-template-columns: minmax(0, 1fr) 420px;
+    grid-template-columns: 1fr 420px;
     gap: 45px;
-  }
-
-  .hero-visual {
-    width: 420px;
   }
 
   .portrait-image {
@@ -1119,10 +1122,6 @@ body.dark .education-card {
     min-height: auto;
     padding-top: 110px;
     padding-bottom: 70px;
-  }
-
-  .hero > .container {
-    width: min(100% - 32px, var(--max-width));
   }
 
   .hero-grid {
@@ -1309,30 +1308,182 @@ body.dark .education-card {
 }
 
 /* =========================================================
-   FINAL HTML STRUCTURE ALIGNMENT
+   FINAL LAYOUT OVERRIDES
+   These rules are intentionally placed last so they override
+   conflicting rules above.
 ========================================================= */
 
-@media (min-width: 851px) {
-  .hero-grid {
-    min-height: 620px;
-  }
+/* Never hide the hero if JavaScript has not loaded yet */
+body:not(.page-loaded) .hero-content,
+body.page-loaded .hero-content {
+  opacity: 1;
+  transform: none;
+}
 
-  .hero-content {
-    align-self: center;
+/* Desktop hero: balanced two-column layout */
+.hero {
+  min-height: calc(100vh - 78px);
+  padding: 95px 0 85px;
+}
+
+.hero-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 500px;
+  align-items: center;
+  gap: 72px;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 650px;
+  padding: 0;
+}
+
+.hero-title {
+  max-width: 650px;
+}
+
+.hero-description {
+  max-width: 560px;
+}
+
+.hero-visual {
+  width: 500px;
+  max-width: 100%;
+  margin: 0 0 0 auto;
+  padding-bottom: 78px;
+}
+
+.portrait-card {
+  width: 100%;
+}
+
+.portrait-image {
+  width: 100%;
+  height: 540px;
+}
+
+.portrait-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+/* Keep decorative elements attached to the visual */
+.medical-symbol {
+  z-index: 10;
+}
+
+.ecg-card {
+  z-index: 20;
+}
+
+/* Prevent sections from looking cramped */
+.about-content {
+  margin-left: auto;
+}
+
+.timeline {
+  width: 100%;
+}
+
+.education-card,
+.clinical-grid,
+.interests-grid,
+.volunteer-content,
+.contact-content {
+  width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 1050px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) 420px;
+    gap: 42px;
   }
 
   .hero-visual {
-    align-self: center;
+    width: 420px;
+  }
+
+  .portrait-image {
+    height: 470px;
+  }
+
+  .ecg-card {
+    right: -12px;
   }
 }
 
+/* Mobile/tablet */
 @media (max-width: 850px) {
-  .hero-grid {
+  .hero {
     min-height: auto;
+    padding: 115px 0 75px;
   }
 
-  .hero-content,
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 55px;
+    align-items: start;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
   .hero-visual {
-    align-self: auto;
+    width: min(500px, 100%);
+    margin: 0 auto;
+    padding-bottom: 85px;
+  }
+
+  .portrait-image {
+    height: 560px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 560px) {
+  .hero {
+    padding-top: 105px;
+  }
+
+  .hero-visual {
+    width: 100%;
+    padding-bottom: 82px;
+  }
+
+  .portrait-image {
+    height: 470px;
+  }
+
+  .portrait-image img {
+    object-position: center 32%;
+  }
+
+  .ecg-card {
+    right: 10px;
+    bottom: 0;
+    width: min(240px, calc(100% - 20px));
+  }
+
+  .medical-symbol {
+    left: -8px;
+    top: -14px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  .portrait-image {
+    height: 410px;
+  }
+
+  .ecg-card {
+    right: 8px;
+    width: calc(100% - 16px);
   }
 }
