@@ -1,86 +1,80 @@
-/* =========================================================
-   PRAJWAL PORTFOLIO — MAIN SCRIPT
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-  /* =======================================================
+  /* =========================================================
+     NO-JS FALLBACK
+  ========================================================= */
+
+  document.documentElement.classList.remove("no-js");
+
+  /* =========================================================
      NAVBAR
-  ======================================================= */
+  ========================================================= */
 
   const navbar = document.querySelector(".navbar");
 
   function updateNavbar() {
     if (!navbar) return;
 
-    if (window.scrollY > 30) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
+    navbar.classList.toggle("scrolled", window.scrollY > 30);
   }
 
-  window.addEventListener("scroll", updateNavbar, { passive: true });
+  window.addEventListener("scroll", updateNavbar, {
+    passive: true,
+  });
+
   updateNavbar();
 
-  /* =======================================================
-     THEME TOGGLE
-  ======================================================= */
+  /* =========================================================
+     THEME
+  ========================================================= */
 
   const themeToggle = document.getElementById("themeToggle");
   const themeIcon = document.querySelector(".theme-icon");
 
   function applyTheme(theme) {
-    const isDark = theme === "dark";
+    const dark = theme === "dark";
 
-    document.body.classList.toggle("dark", isDark);
+    document.body.classList.toggle("dark", dark);
 
     if (themeIcon) {
-      themeIcon.textContent = isDark ? "☀" : "☾";
+      themeIcon.textContent = dark ? "☀" : "☾";
     }
 
     if (themeToggle) {
       themeToggle.setAttribute(
         "aria-label",
-        isDark ? "Switch to light theme" : "Switch to dark theme",
+        dark ? "Switch to light theme" : "Switch to dark theme",
       );
+      themeToggle.setAttribute("title", dark ? "Light theme" : "Dark theme");
     }
   }
 
   const savedTheme = localStorage.getItem("prajwal-theme");
 
-  if (savedTheme === "dark") {
-    applyTheme("dark");
-  } else {
-    applyTheme("light");
-  }
+  applyTheme(savedTheme === "dark" ? "dark" : "light");
 
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
-      const isDark = document.body.classList.contains("dark");
-      const nextTheme = isDark ? "light" : "dark";
+      const dark = document.body.classList.contains("dark");
+      const nextTheme = dark ? "light" : "dark";
 
       applyTheme(nextTheme);
       localStorage.setItem("prajwal-theme", nextTheme);
     });
   }
 
-  /* =======================================================
-     SMOOTH NAVIGATION
-  ======================================================= */
+  /* =========================================================
+     SMOOTH SCROLL
+  ========================================================= */
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {
       const targetId = link.getAttribute("href");
 
-      if (!targetId || targetId === "#") {
-        return;
-      }
+      if (!targetId || targetId === "#") return;
 
       const target = document.querySelector(targetId);
 
-      if (!target) {
-        return;
-      }
+      if (!target) return;
 
       event.preventDefault();
 
@@ -91,20 +85,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* =======================================================
-     ACTIVE NAVIGATION LINK
-  ======================================================= */
+  /* =========================================================
+     ACTIVE NAVIGATION
+  ========================================================= */
 
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-links a");
 
-  if ("IntersectionObserver" in window) {
+  if ("IntersectionObserver" in window && sections.length) {
     const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
+          if (!entry.isIntersecting) return;
 
           navLinks.forEach((link) => {
             link.classList.remove("active");
@@ -120,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
       {
-        rootMargin: "-20% 0px -60% 0px",
+        rootMargin: "-25% 0px -65% 0px",
         threshold: 0,
       },
     );
@@ -130,9 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* =======================================================
+  /* =========================================================
      SCROLL REVEAL
-  ======================================================= */
+  ========================================================= */
 
   const revealElements = document.querySelectorAll(`
     .section-header,
@@ -153,9 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
+          if (!entry.isIntersecting) return;
 
           entry.target.classList.add("visible");
           observer.unobserve(entry.target);
@@ -175,22 +165,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* =======================================================
+  /* =========================================================
      BACK TO TOP
-  ======================================================= */
+  ========================================================= */
 
   const backToTop = document.getElementById("backToTop");
 
   function updateBackToTop() {
-    if (!backToTop) {
-      return;
-    }
+    if (!backToTop) return;
 
-    if (window.scrollY > 600) {
-      backToTop.classList.add("show");
-    } else {
-      backToTop.classList.remove("show");
-    }
+    backToTop.classList.toggle("visible", window.scrollY > 600);
   }
 
   window.addEventListener("scroll", updateBackToTop, {
@@ -208,35 +192,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* =======================================================
-     ECG ANIMATION
-  ======================================================= */
+  /* =========================================================
+     ECG
+  ========================================================= */
 
   const ecgCard = document.querySelector(".ecg-card");
   const ecgLine = document.querySelector(".ecg-card polyline");
-
-  if (ecgLine) {
-    ecgLine.style.animation = "none";
-
-    requestAnimationFrame(() => {
-      ecgLine.style.animation = "";
-      ecgLine.style.animationPlayState = "running";
-    });
-  }
-
-  /* =======================================================
-     PAUSE ECG WHEN OFF SCREEN
-  ======================================================= */
 
   if (ecgCard && ecgLine && "IntersectionObserver" in window) {
     const ecgObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            ecgLine.style.animationPlayState = "running";
-          } else {
-            ecgLine.style.animationPlayState = "paused";
-          }
+          ecgLine.style.animationPlayState = entry.isIntersecting
+            ? "running"
+            : "paused";
         });
       },
       {
@@ -247,9 +216,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ecgObserver.observe(ecgCard);
   }
 
-  /* =======================================================
-     PAGE LOAD
-  ======================================================= */
+  /* =========================================================
+     PAGE READY
+  ========================================================= */
 
   document.body.classList.add("page-loaded");
 });
